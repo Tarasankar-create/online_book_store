@@ -1,0 +1,12 @@
+<form method="post">
+    {% csrf_token %}
+    Name: <input type="text" name="pname"><br>
+    Email: <input type="email" name="pemail"><br>
+    Mobileno: <input type="text" name="pmobno"><br>
+    Password: <input type="password" name="ppwd"><br>
+    Document: <input type="file" name="pdoc"><br>
+    Address: <textarea name="paddress"></textarea><br>
+    <input type="submit" value="Register" name="btn">
+</form>
+
+{{msg}}

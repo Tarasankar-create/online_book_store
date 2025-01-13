@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'layout/base.html' %}
+    {% block homeblock %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<body style="text-align: center; margin-bottom:10px;">
+    <h1>Welcome to contact page</h1>
+    <form method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="coname"><br>
+        Contact: <input type="number" name="cocontact"><br>
+        Email: <input type="email" name="coemail"><br>
+        Address: <textarea name="coaddress"></textarea><br>
+        <input type="submit" value="Register" name="btn">
+    </form>
+    <div>{{msg}}</div>
+</body>
+{% endblock %}
+</html>

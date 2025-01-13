@@ -1,0 +1,10 @@
+<form method="post">
+    {% csrf_token %}
+    cName: <input type="text" name="cname"><br>
+    Contact: <input type="number" name="ccontact"><br>
+    Email: <input type="email" name="cemail"><br>
+    Password: <input type="password" name="cpwd"><br>
+    DOB: <input type="text" name="cdob"><br>
+    Address: <textarea name="caddress"></textarea><br>
+    <input type="submit" value="Register" name="btn">
+</form>
