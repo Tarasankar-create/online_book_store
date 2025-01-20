@@ -1,0 +1,7 @@
+<form method="post">
+    email: <input type="email" name="cemail"><br>
+    password: <input type="password" name="cpwd"><br>
+    <input type="submit" value="login" name="btn">
+    {% csrf_token %}
+</form>
+{{msg}}

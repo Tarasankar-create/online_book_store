@@ -1,3 +1,14 @@
+<style>
+  details nav a{
+    text-decoration:none;
+    color: black;
+    padding:2px;
+  }
+  details nav a:hover{
+    color:orange;
+  }
+</style>
+
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <div class="col-md-3 mb-2 mb-md-0">
       <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
@@ -9,7 +20,14 @@
       <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
       <li><a href="about/" class="nav-link px-2">About</a></li>
       <li><a href="{% url 'contact' %}" class="nav-link px-2">Contact</a></li>
-      <li><a href="#" class="nav-link px-2">FAQs</a></li>
+        <details style="text-decoration:none; ">
+          <summary style="position: relative; top:8px; color:rgb(13,110,253); font-size:17px; margin:0px 2px">Books</summary>
+          <nav style="position: absolute; background-color: #ccc; box-shadow:0px 0px 6px gray; width:100px; margin-top:6px; text-align: center;">
+            <p><a href="{% url 'add_book' %}">Add book</a></p>
+            <p><a href="">View book</a></p>
+          </nav>
+        </details>
+     
       <li><a href="#" class="nav-link px-2">About</a></li>
     </ul>
 
