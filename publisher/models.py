@@ -1,16 +1,5 @@
 from django.db import models
 
-# Create your models here.
-# class add_book(models.Model):
-#     bookname=models.CharField(max_length=50)
-#     authorname=models.CharField(max_length=50)
-#     isbn=models.IntegerField(max_length=50)
-#     price=models.IntegerField()
-#     discount=models.IntegerField()
-#     bookdoc=models.FileField(upload_to='document/')
-#     def __str__(self):
-#         return self.bookname
-    
 class Catagory(models.Model):
     c_id=models.AutoField(primary_key=True)
     c_name=models.CharField(max_length=40)

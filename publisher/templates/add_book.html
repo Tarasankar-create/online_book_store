@@ -25,11 +25,18 @@
 </style>
 <form method="POST">
     <p style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size:20px; text-decoration: underline;">ADD BOOKS</p>
-    BookName :<input type="text" name="aname"><br>
-    AuthorName :<input type="text" name="auname"><br>
-    ISBN No :<input type="text" name="ino"><br>
+    Catagory<select name="cname">
+    <option value="0">--select---</option>
+    {% for data in cdata %}
+    <option value="{{data.c_name}}">{{data.c_name}}</option>
+    {% endfor %}
+    </select><br>
+    BookName :<input type="text" name="bname"><br>
+    AuthorName :<input type="text" name="aname"><br>
+    ISBN No :<input type="text" name="isbn"><br>
     Book price :<input type="text" name="bprice"><br>
     Discount :<input type="text" name="dis"><br>
-    BookImage :<input type="file" name="idoc"><br>
-    <input type="submit" value="Register" name="btn" style="transform:translate(130px,10px); width:100px; height:30px;">
+    BookImage :<input type="file" name="bimage"><br>
+    <input type="submit" value="ADDBOOK" name="btn" style="transform:translate(130px,10px); width:100px; height:30px;">
+    {% csrf_token %}
 </form>

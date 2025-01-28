@@ -32,6 +32,6 @@ urlpatterns = [
     path('login/',include('login.urls')),
     #publisher
     path('pub_home/',include('publisher.urls')),
-    path('add_book/',pubviews.add_book,name='add_book'),
+    path('addbook/',pubviews.addbook,name='addbook'),
     # path('customer/',include('customer.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
