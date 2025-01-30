@@ -9,7 +9,7 @@
         background-color:#fcfcfc;
         padding: 10px;
         width:400px;
-        height:400px;
+        height:450px;
         box-shadow:0px 0px 6px gray;
         font-family: Arial, Helvetica, sans-serif;
     }
@@ -23,9 +23,9 @@
         box-shadow:0px 0px 2px gray;
     }
 </style>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <p style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size:20px; text-decoration: underline;">ADD BOOKS</p>
-    Catagory<select name="cname">
+    Catagory :<select name="cname">
     <option value="0">--select---</option>
     {% for data in cdata %}
     <option value="{{data.c_name}}">{{data.c_name}}</option>
@@ -37,6 +37,7 @@
     Book price :<input type="text" name="bprice"><br>
     Discount :<input type="text" name="dis"><br>
     BookImage :<input type="file" name="bimage"><br>
+    Review: <textarea name="review"></textarea><br>
     <input type="submit" value="ADDBOOK" name="btn" style="transform:translate(130px,10px); width:100px; height:30px;">
     {% csrf_token %}
 </form>

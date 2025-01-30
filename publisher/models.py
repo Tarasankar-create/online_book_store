@@ -14,6 +14,6 @@ class Add_Book(models.Model):
     price=models.FloatField()
     discount=models.IntegerField()
     bookdoc=models.ImageField(upload_to='Book_Image/')
-    Review=models.CharField(max_length=30,default=None)
+    review = models.TextField(null=True, blank=True) 
     def __str__(self):
         return self.bookname
