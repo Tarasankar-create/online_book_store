@@ -5,22 +5,6 @@ from django.contrib import messages
 def pub_home(request):
     name=request.session.get('pname')
     return render(request,'pub_home.html',{'name':name})
-# def addbook(request):
-#     ob=Catagory.objects.all()
-#     if request.method=='POST':
-#         cname=request.POST['cname']
-#         catagory_name=Catagory.objects.get(c_name=cname)
-#         bname=request.POST['bname']
-#         aname=request.POST['aname']
-#         isbnno=request.POST['isbn']
-#         bprice=request.POST['bprice']
-#         dis=request.POST['dis']
-#         image=request.FILES['bimage']
-#         obj=Add_Book.objects.create(c_name=catagory_name,book_name=bname,authorname=aname,isbn=isbnno,price=bprice,discount=dis,bookdoc=image)
-#         ob.save()
-#         return redirect('addbook')
-#     return render(request,'add_book.html')
-
 
 def addbook(request):
     ob = Catagory.objects.all()  # Get all categories
@@ -81,13 +65,28 @@ def viewbook(request):
                 return redirect('viewbook')
     return render(request,'viewbook.html',{'bookdata':ob})
 
+
 def update(request):
-    if request.method=='POST':
-        isbnno=request.POST['isbnno']
-        bname=request.POST['bname']
-        bprice=request.POST['bprice']
-        aname=request.POST['aname']
-        dis=request.POST['dis']
-        obj=Add_Book.objects.get(isbn=isbnno).update(bookname=bname,price=bprice,authorname=aname,discount=dis)
+    if request.method == 'POST':
+        isbnno = request.POST['isbnno']
+        bname = request.POST['bname']
+        bprice = request.POST['bprice']
+        aname = request.POST['aname']
+        dis = request.POST['dis']
+        image_file=request.FILES['image']
+        
+        # Get the object and update its fields
+        obj = Add_Book.objects.get(isbn=isbnno)
+        obj.bookname = bname
+        obj.price = bprice
+        obj.authorname = aname
+        obj.discount = dis
+        
+        # Save the updated object
+        if image_file:
+            obj.bookdoc=image_file
+        obj.save()
+
         return redirect('viewbook')
-    return render(request,'edit.html')
+    
+    return render(request, 'edit.html')

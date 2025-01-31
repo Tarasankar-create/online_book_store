@@ -1,0 +1,9 @@
+<form method="post" enctype="multipart/form-data">
+    Name: <input type="text" name="pname"><br>
+    Email: <input type="email" name="pemail"><br>
+    Mobileno: <input type="text" name="pmobile"><br>
+    Password: <input type="password" name="ppwd"><br>
+    Document: <input type="file" name="pdoc"><br>
+    Address: <textarea name="paddress"></textarea><br>
+    {% csrf_token %}
+</form>

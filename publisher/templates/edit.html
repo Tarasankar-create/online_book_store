@@ -1,9 +1,12 @@
-<form method="post" action="{% url 'update' %}">
-    <input type="text" name="isbnno" value="{{data.isbn}}" readonly>
+<form method="post" action="{% url 'update' %}" enctype="multipart/form-data">
+    Isbn_No :<input type="text" name="isbnno" value="{{data.isbn}}" readonly><br>
     bookname :<input type="text" name="bname" value="{{data.bookname}}"><br>
     bprice :<input type="text" name="bprice" value="{{data.price}}"><br>
     Author_name :<input type="text" name="aname" value="{{data.authorname}}"><br>
     Discount :<input type="text" name="dis" value="{{data.discount}}"><br>
+    Image :<img src="{{data.bookdoc.url}}" height="100px" width="100px"><br>
+    <input type="file" name="image"><br>
+
 
     <input type="submit" value="Update" name="btn">
     {% csrf_token %}
