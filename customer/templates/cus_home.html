@@ -1,1 +1,21 @@
-<h2>Welcome to customer home..........{{cus_name}}</h2>
+{% extends 'clayout/base.html' %}
+{% load static %}
+{% block cblock %}
+<style>
+    .cata {
+        position: absolute;
+        top: 0;
+        left: 400px;
+    }
+</style>
+<div class="cata">    
+    <h2>Welcome to customer home..........{{cus_name}}</h2>
+    <button type="button" id="showbutton">Show Books</button>
+</div>
+
+<script>
+    document.getElementById("showbutton").addEventListener('click', () => {
+        window.location.href = "{% url 'bookcatagory' %}";
+    });
+</script>
+{% endblock %}

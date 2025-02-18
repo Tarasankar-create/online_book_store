@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2 class="text-center">Your Cart 🛒</h2>
+
+    {% if cart %}
+        <div class="row">
+            {% for book in cart %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{{ book.Book_image }}" class="card-img-top" alt="Book Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.Book_name }}</h5>
+                            <p class="card-text"><strong>Author:</strong> {{ book.Author_name }}</p>
+                            <p class="card-text"><strong>ISBN:</strong> {{ book.ISBN_No }}</p>
+                            <p class="card-text"><strong>Price:</strong> {{ book.Book_price }}</p>
+                            <p class="card-text"><strong>Discount:</strong> {{ book.Discount }}%</p>
+                            <p class="card-text"><strong>Quantity:</strong> {{ book.quantity }}</p>
+
+                            <button class="btn btn-danger remove-from-cart" data-isbn="{{ book.ISBN_No }}">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="#" class="btn btn-success">Proceed to Checkout</a>
+    {% else %}
+        <p class="text-center text-danger">Your cart is empty.</p>
+    {% endif %}
+</div>
+
+<script>
+    $(document).on("click", ".remove-from-cart", function () {
+        var isbn = $(this).data("isbn");
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'remove_from_cart' %}",
+            data: {
+                isbn: isbn,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function (response) {
+                alert(response.message);
+                location.reload();
+            }
+        });
+    });
+</script>

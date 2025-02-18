@@ -20,6 +20,7 @@ from Home import views as hviews
 from publisher import views as pubviews
 from django.conf.urls.static import static
 from django.conf import settings
+from customer import views as cviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +34,8 @@ urlpatterns = [
     #publisher
     path('pub_home/',include('publisher.urls')),
     path('addbook/',pubviews.addbook,name='addbook'),
-    # path('customer/',include('customer.urls')),
+    path('customer/',include('customer.urls')),
+    path("add_to_cart/", cviews.add_to_cart, name="add_to_cart"),
+    path("cart/",cviews.view_cart, name="cart"),
+    path("remove_from_cart/", cviews.remove_from_cart, name="remove_from_cart"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -25,10 +25,9 @@ def cus_login(request):
                 ob=cus_register.objects.get(cemail=email,cpwd=password)
                 request.session['cname']=ob.cname
                 request.session['cemail']=ob.cemail
-                if ob.status==1:
-                    return redirect('cus_home')
-                else:
-                    return render(request,'cus_login.html',{'msg':'Waiting for admin conformation'})
+                
+                return redirect('cus_home')
+                
             except Exception as e:
                 return render(request,'cus_login.html',{'msg':'Invalid' +str(e)})
         return render(request,'cus_login.html')

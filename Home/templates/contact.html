@@ -8,10 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
-<body style="text-align: center; margin-bottom:10px;">
+<body class="text-center">
     <h1>Welcome to contact page</h1>
-    <form method="post">
+    <form method="post" class="cont">
         {% csrf_token %}
         Name: <input type="text" name="coname"><br>
         Contact: <input type="number" name="cocontact"><br>
@@ -21,5 +20,6 @@
     </form>
     <div>{{msg}}</div>
 </body>
+</head>
 {% endblock %}
 </html>
