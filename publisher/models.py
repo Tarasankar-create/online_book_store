@@ -10,7 +10,7 @@ class Add_Book(models.Model):
     c_name=models.ForeignKey(Catagory,on_delete=models.CASCADE)
     bookname=models.CharField(max_length=50)
     authorname=models.CharField(max_length=50)
-    isbn=models.IntegerField(primary_key=True,max_length=50)
+    isbn=models.IntegerField(primary_key=True)
     price=models.FloatField()
     discount=models.IntegerField()
     bookdoc=models.ImageField(upload_to='Book_Image/')
