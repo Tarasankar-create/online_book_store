@@ -1,1 +1,63 @@
-<h1>Welcome to faq page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'layout/base.html' %}
+    {% block homeblock %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <style>
+       .head{
+        background-color: rgb(13,110,253);
+        padding:10px 0px;
+        text-align: center;
+       }
+       .faq-item{
+        padding: 4px 8px;
+        background-color: #ccc;
+        margin:5px 0px;
+       }
+       
+    </style>
+</head>
+<body>
+    <div>
+        <div class="head">
+            <h1>FAQ - Frequently Asked Questions</h1>
+        </div>
+
+        <div class="faqcont">
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>What is this website about?</h3>
+                    <p>This website is an online book store where you can browse, purchase, and sell books. You can also view detailed information about each book, including reviews, author information, and pricing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How can I purchase a book?</h3>
+                    <p>Simply browse our catalog, select the book you'd like to purchase, and follow the checkout process to complete your order. We accept various payment methods for your convenience.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I sell books on this platform?</h3>
+                    <p>Yes, we allow publishers and individuals to list books for sale. You can register as a publisher and start adding your books to our platform.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How can I contact customer support?</h3>
+                    <p>If you need help, you can reach us via our <a href="{% url 'contact' %}">Contact Page</a>. We're available 24/7 to assist with any queries you may have.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do you offer discounts on books?</h3>
+                    <p>Yes, we regularly offer discounts on selected books. You can keep an eye on our promotions and sales for exciting offers!</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}
+</body>
+</html>

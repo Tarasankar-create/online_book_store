@@ -1,9 +1,118 @@
-<form method="post" enctype="multipart/form-data">
-    Name: <input type="text" name="pname"><br>
-    Email: <input type="email" name="pemail"><br>
-    Mobileno: <input type="text" name="pmobile"><br>
-    Password: <input type="password" name="ppwd"><br>
-    Document: <input type="file" name="pdoc"><br>
-    Address: <textarea name="paddress"></textarea><br>
-    {% csrf_token %}
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            background-color: #fcfcfc;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0px 0px 6px gray;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+        }
+
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-shadow: 0px 0px 2px gray;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type="file"] {
+            padding: 0;
+        }
+
+        form input[type="submit"] {
+            width: 120px;
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transform: translateX(130px);
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        p.form-title {
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <p class="form-title">Register</p>
+        
+        <div class="form-group">
+            <label for="pname">Name:</label>
+            <input type="text" id="pname" name="pname">
+        </div>
+
+        <div class="form-group">
+            <label for="pemail">Email:</label>
+            <input type="email" id="pemail" name="pemail">
+        </div>
+
+        <div class="form-group">
+            <label for="pmobile">Mobile No:</label>
+            <input type="text" id="pmobile" name="pmobile">
+        </div>
+
+        <div class="form-group">
+            <label for="ppwd">Password:</label>
+            <input type="password" id="ppwd" name="ppwd">
+        </div>
+
+        <div class="form-group">
+            <label for="pdoc">Document:</label>
+            <input type="file" id="pdoc" name="pdoc">
+        </div>
+
+        <div class="form-group">
+            <label for="paddress">Address:</label>
+            <textarea id="paddress" name="paddress"></textarea>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Register" name="btn">
+        </div>
+        
+        {% csrf_token %}
+    </form>
+</body>
+</html>

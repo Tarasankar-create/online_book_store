@@ -4,5 +4,6 @@ urlpatterns=[
     path('pub_home',pviews.pub_home,name='pubhome'),
     path('addbook',pviews.addbook,name='addbook'),
     path('viewbook',pviews.viewbook,name='viewbook'),
-    path('update',pviews.update,name='update')
+    path('update',pviews.update,name='update'),
+    
 ]

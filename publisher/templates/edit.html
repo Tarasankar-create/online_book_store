@@ -1,13 +1,119 @@
-<form method="post" action="{% url 'update' %}" enctype="multipart/form-data">
-    Isbn_No :<input type="text" name="isbnno" value="{{data.isbn}}" readonly><br>
-    bookname :<input type="text" name="bname" value="{{data.bookname}}"><br>
-    bprice :<input type="text" name="bprice" value="{{data.price}}"><br>
-    Author_name :<input type="text" name="aname" value="{{data.authorname}}"><br>
-    Discount :<input type="text" name="dis" value="{{data.discount}}"><br>
-    Image :<img src="{{data.bookdoc.url}}" height="100px" width="100px"><br>
-    <input type="file" name="image"><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        form {
+            background-color: #fcfcfc;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0px 0px 6px gray;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+        }
 
-    <input type="submit" value="Update" name="btn">
-    {% csrf_token %}
-</form>
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-shadow: 0px 0px 2px gray;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type="file"] {
+            padding: 0;
+        }
+
+        form input[type="submit"] {
+            width: 120px;
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transform: translateX(130px);
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p.form-title {
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'update' %}" enctype="multipart/form-data">
+        <p class="form-title">Update Book Information</p>
+        
+        <div class="form-group">
+            <label for="isbnno">ISBN No:</label>
+            <input type="text" id="isbnno" name="isbnno" value="{{ data.isbn }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="bname">Book Name:</label>
+            <input type="text" id="bname" name="bname" value="{{ data.bookname }}">
+        </div>
+
+        <div class="form-group">
+            <label for="bprice">Book Price:</label>
+            <input type="text" id="bprice" name="bprice" value="{{ data.price }}">
+        </div>
+
+        <div class="form-group">
+            <label for="aname">Author Name:</label>
+            <input type="text" id="aname" name="aname" value="{{ data.authorname }}">
+        </div>
+
+        <div class="form-group">
+            <label for="dis">Discount:</label>
+            <input type="text" id="dis" name="dis" value="{{ data.discount }}">
+        </div>
+
+        <div class="form-group">
+            <label>Image:</label>
+            <img src="{{ data.bookdoc.url }}" height="100px" width="100px" alt="Book Image"><br>
+            <input type="file" name="image">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Update" name="btn">
+        </div>
+        
+        {% csrf_token %}
+    </form>
+</body>
+</html>

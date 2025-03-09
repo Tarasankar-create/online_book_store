@@ -6,11 +6,55 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #007bff;
+            color: #fff;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .about-text {
+            line-height: 1.6;
+            color: #333;
+        }
+        .about-text p {
+            font-size: 1.1em;
+        }
+       
+    </style>
 </head>
 <body>
-    <h1>Welcome to about page</h1>
+    <div class="header">
+        <h1>Welcome to the About Page</h1>
+    </div>
+
+    <div class="container">
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>Welcome to our online bookstore! We are a team dedicated to providing you with the best books at affordable prices. Our mission is to make reading more accessible and enjoyable for everyone.</p>
+            <p>We offer a wide variety of genres, including fiction, non-fiction, mystery, and fantasy. Whether you're a casual reader or a book enthusiast, we have something for everyone. Our bookstore is built with you in mind, offering easy browsing and secure checkout options.</p>
+            <p>Thank you for choosing us for your reading needs. We hope you enjoy browsing our collection and find the perfect book for you!</p>
+        </div>
+    </div>
+    {% endblock %}
 </body>
-{% endblock %}
 </html>

@@ -7,18 +7,48 @@
   details nav a:hover{
     color:orange;
   }
+  body {
+    background-color: white;
+    color: black;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+
+button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    bottom:5px;
+}
+
+/* Optional: Style the button for each mode */
+#theme-toggle.light-mode {
+    background-color: #57585a !important;
+    color: white;
+}
+
+button.dark-mode {
+    background-color: #333;
+    color: white;
+}
 </style>
 
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
+    <div class="d-flex gap-4 align-items-center">
+      <p class="fs-3 ms-3">Book store</p>
+      <button id="theme-toggle" class="btn btn-outline-secondary">Light/Dark Mode</button>
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a href="about/" class="nav-link px-2">About</a></li>
+      <li><a href="{% url 'about' %}" class="nav-link px-2">About</a></li>
       <li><a href="{% url 'contact' %}" class="nav-link px-2">Contact</a></li>
         <details style="text-decoration:none; ">
           <summary style="position: relative; top:8px; color:rgb(13,110,253); font-size:17px; margin:0px 2px;">Books</summary>
@@ -28,11 +58,39 @@
           </nav>
         </details>
       
-      <li><a href="#" class="nav-link px-2">About</a></li>
+      <li><a href="{% url 'faq' %}" class="nav-link px-2">FAQ</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'cuslogin' %}" style="color:#fff;">Sign in</a></button>
+      <button type="button" class="btn btn-outline-primary  me-2"><a href="{% url 'cuslogin' %}" style="color:#fff;">Sign in</a></button>
       <button type="button" class="btn btn-primary"><a href="{% url 'cusregister' %}" style="color:#fff;">Sign up</a></button>
     </div>
   </header>
+  <script>
+    // Select the button and the body element
+const themeToggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference in localStorage
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggleButton.classList.add('dark-mode');
+} else {
+    body.classList.remove('dark-mode');
+    themeToggleButton.classList.remove('dark-mode');
+}
+
+// Toggle between light and dark mode on button click
+themeToggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    themeToggleButton.classList.toggle('dark-mode');
+
+    // Save theme preference in localStorage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+  </script>

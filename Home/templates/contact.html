@@ -6,20 +6,50 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<body class="text-center">
-    <h1>Welcome to contact page</h1>
-    <form method="post" class="cont">
-        {% csrf_token %}
-        Name: <input type="text" name="coname"><br>
-        Contact: <input type="number" name="cocontact"><br>
-        Email: <input type="email" name="coemail"><br>
-        Address: <textarea name="coaddress"></textarea><br>
-        <input type="submit" value="Register" name="btn">
-    </form>
-    <div>{{msg}}</div>
-</body>
+    <title>Contact Us</title>
+    <style>
+        .ccont{
+            border:1px solid black;
+  
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .ccont form-darkmode{
+            text-align: center;
+            box-shadow:1px 1px 6px #fff;
+        }
+        .ccont form{
+            text-align: center;
+            box-shadow:1px 1px 6px gray;
+        }
+        .ccont h1{
+            text-align: center;
+            padding:10px 0px ;
+            background-color: rgb(13,110,253);
+        }
+        .ccont form input{
+            margin:10px 4px;
+        }
+    </style>
 </head>
-{% endblock %}
+<body>
+    <div class="ccont">
+        <h1>Contact Us</h1>
+        <form method="post">
+            {% csrf_token %}
+            Name:<input type="text" name="coname" id="coname" required><br>
+            Contact:<input type="number" name="cocontact" id="cocontact" required><br>
+            Email:<input type="email" name="coemail" id="coemail" required><br>
+            Address:<textarea name="coaddress" id="coaddress" required></textarea><br>
+            <input type="submit" value="Register" name="btn"><br>
+        </form>
+        
+        <div class="msg">
+            {{ msg }}
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
 </html>
