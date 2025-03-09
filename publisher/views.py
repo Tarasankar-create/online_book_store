@@ -73,7 +73,7 @@ def update(request):
         bprice = request.POST['bprice']
         aname = request.POST['aname']
         dis = request.POST['dis']
-        image_file=request.FILES['image']
+        # image_file=request.FILES['image']
         
         # Get the object and update its fields
         obj = Add_Book.objects.get(isbn=isbnno)
@@ -83,8 +83,11 @@ def update(request):
         obj.discount = dis
         
         # Save the updated object
-        if image_file:
-            obj.bookdoc=image_file
+        if 'image' in request.FILES:
+            image_file = request.FILES['image']
+            obj.bookdoc = image_file
+        
+        # Save the updated object
         obj.save()
 
         return redirect('viewbook')

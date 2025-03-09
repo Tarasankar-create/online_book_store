@@ -1,0 +1,28 @@
+{% extends 'clayout/base.html' %}
+
+{% block cblock %}
+<style>
+    .container{
+        position: relative;
+        top:100px;
+    }
+    </style>
+<div class="container mt-5">
+    <h2 class="text-center">Enter Card Details 💳</h2>
+    <div class="card p-4 shadow-sm">
+        <form method="POST" action="{% url 'order_success' %}">
+            {% csrf_token %}
+            <label>Card Number:</label>
+            <input type="text" class="form-control" required>
+
+            <label>Expiry Date:</label>
+            <input type="month" class="form-control" required>
+
+            <label>CVV:</label>
+            <input type="password" class="form-control" required>
+
+            <button type="submit" class="btn btn-success w-100 mt-4">Pay Now</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

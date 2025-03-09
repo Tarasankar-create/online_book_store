@@ -1,0 +1,15 @@
+{% extends 'clayout/base.html' %}
+
+{% block cblock %}
+<style>
+    .container{
+        position: relative;
+        top:100px;
+    }
+    </style>
+<div class="container mt-5 text-center">
+    <h2>Redirecting to PayPal... 🏦</h2>
+    <p>Please wait while we redirect you to PayPal for payment.</p>
+    <meta http-equiv="refresh" content="3; url=https://www.paypal.com">
+</div>
+{% endblock %}

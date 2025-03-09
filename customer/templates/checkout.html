@@ -1,18 +1,35 @@
 {% extends 'clayout/base.html' %}
-
 {% block cblock %}
-<div class="container mt-5">
-    <h2 class="text-center">Checkout 🛍</h2>
+<style>
+.container{
+    position: relative;
+    top:100px;
+}
+</style>
+<div class="container">
+    <h2 class="text-center">Checkout 🛍️</h2>
 
     <div class="card p-4 shadow-sm">
         <h4>Order Summary</h4>
         <ul>
             {% for book in cart %}
-                <li>{{ book.Book_name }} - ${{ book.Book_price }} (x{{ book.quantity }})</li>
+                <li>
+                    {{ book.bookname }} - {{ book.price }} × {{ book.quantity }} 
+                    = <strong>{{ book.total_price }}</strong>
+                    <br>
+                    <span class="text-success">Discount: {{ book.discount }}% (-{{ book.total_price|add:book.price }})</span>
+                    <br>
+                    <strong>Final Price: {{ book.total_price }}</strong>
+                </li>
             {% endfor %}
         </ul>
 
-        <a href="{% url 'payment' %}" class="btn btn-primary w-100 mt-3">Proceed to Payment</a>
-    </div>
+        <hr>
+        <h4 class="text-end">Total Amount: <strong>{{ total_amount }}</strong></h4>
+
+        <a href="{% url 'payment_options' %}" class="btn btn-primary w-100 mt-3 {% if total_amount == 0 %}disabled{% endif %}">
+            Proceed to Payment
+        </a>
+         </div>
 </div>
-{% endblock %}
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect    
 from register.models import pub_register,cus_register
+from django.contrib.auth import logout
 # Create your views here.
 def pub_login(request):
         if request.method=='POST':
@@ -10,7 +11,7 @@ def pub_login(request):
                 request.session['pname']=ob.pname
                 request.session['pemail']=ob.pemail
                 if ob.status==1:
-                    return redirect('pub_home')
+                    return redirect('pubhome')
                 else:
                     return render(request,'pub_login.html',{'msg':'Waiting for admin conformation'})
             except Exception as e:
@@ -31,3 +32,8 @@ def cus_login(request):
             except Exception as e:
                 return render(request,'cus_login.html',{'msg':'Invalid' +str(e)})
         return render(request,'cus_login.html')
+
+
+def logout_view(request):
+     logout(request)
+     return redirect('home')
