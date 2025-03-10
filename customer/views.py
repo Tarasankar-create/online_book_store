@@ -33,16 +33,15 @@ def add_to_cart(request):
     if request.method == "POST":
         isbn = request.POST.get("isbn")
 
-        # Check if the cart exists in the session, otherwise initialize it as an empty list
         if "cart" not in request.session:
             request.session["cart"] = []
 
         cart = request.session["cart"]
-        found = False  # Flag to track if the book already exists in the cart
+        found = False  
 
-        # Loop through the cart to check if the book already exists
+      
         for item in cart:
-            if item["isbn"] == int(isbn):  # Check for the same ISBN
+            if item["isbn"] == int(isbn): 
                 item["quantity"] += 1  # Increase quantity if found
                 found = True
                 break
@@ -130,7 +129,7 @@ def payment(request):
 
 
 def cus_home(request):
-    cname=request.session.get('name')
+    cname=request.session.get('cname')
     return render(request,'cus_home.html',{'cus_name':cname})
 
 
